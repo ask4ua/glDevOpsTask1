@@ -5,4 +5,4 @@ VOLUME /app
 ENTRYPOINT ["python3","/app/getres.py"]
 CMD []
 
-COPY ./app /app
+COPY ./app/ /app/

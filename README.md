@@ -1,7 +1,9 @@
 # Intro
-getres.py - just a containered tool to get CPU and RAM utilization for fun;)
+getres.py - just a tool to get CPU and RAM utilization for fun;)
 
-## How to run natively ()without Docker)
+Available either containered in Docker or as native script.
+
+## How to run natively (without Docker)
 The script getres.py provides in response cpu or memory resource utilization.
 Only 1 parameter is acceptable in a time.
 
@@ -12,7 +14,7 @@ Where:
 - mem - prints RAM metrics
 
 getres.py is stored in folder app of Git repo.
-Could be moved as standalone app to any other location.
+Could be moved as standalone ./app to any other location.
 
 Examples of usage:
 1) Get memory usage:
@@ -37,7 +39,13 @@ As prerequizite docker should be installed. Follow by this guide if needed: <htt
 
 Steps:
 1) Checkout the repo: 
-2) Navigate to the root directory of your local repo.
+
+        git clone https://github.com/ask4ua/glDevOpsTask1
+
+2) Navigate to the root directory of your local repo:
+
+        cd glDevOpsTask1/
+        
 3) Execute docker build with such options:
 
         docker build . -t getres -f docker/Dockerfile
@@ -50,26 +58,13 @@ Steps:
         getres                       latest              2d78f7077655        44 seconds ago      937MB
         docker.ask4ua.com/whir-app   latest              3f4e6630f268        20 hours ago        416MB
         ...       
+### How to tun in docker
+To run execute such command for Memory monitoring:
 
-### How to use getres in docker image
-Check you have retrieved an image and loaded it:
+        docker run --rm getres mem
+        
+and for cpu:
 
-    t00l:glDevOpsTask1 volk$ docker image ls | grep getres
-    getres                       latest              ff97a55c3d03        7 minutes ago       937MB
-
-If not loaded - use this instruction how to load custom docker images
-
-Just run container as cpu or mem parameter:
-
-    t00l:dir user$ docker run --rm getres cpu
-    system.cpu.user 5727.66
-    system.cpu.nice 0.0
-    system.cpu.system 5593.73
-    ...
-
-### How it is working in Docker
-TBD for:
-
-There are several challenges you may face:
- - How to display information about processes running on the host machine from within container environment (think about pid namespaces).
- - How to display usernames for processes running on the host machine from within container environment (think how linux resolves uid to username and docker volumes).
+        docker run --rm getres cpu
+        
+Enjoy!)
