@@ -52,7 +52,7 @@ Steps:
     
     Check docker image **getres** is created:
     
-        t00l:glDevOpsTask1 volk$ docker image ls
+        docker image ls
         
         REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
         getres                       latest              2d78f7077655        44 seconds ago      937MB
