@@ -15,6 +15,18 @@ class getRes():
         for name, value in psutil.swap_memory()._asdict().items():
             print("swap " + str(name) + " " + str(value))
 
+    @staticmethod
+    def print_ps():
+        for proc in psutil.process_iter():
+            try:
+                pinfo = proc.as_dict()
+
+            except psutil.NoSuchProcess:
+                pass
+            else:
+                print(str(pinfo.get('pid')) + "  " + str(pinfo.get('name')) + "/" + str(pinfo.get('username')))
+
+
 class help():
     @staticmethod
     def print_full_help():
@@ -24,7 +36,9 @@ class help():
         \n\
             Where:\n\
             - cpu - prints CPU metrics\n\
-            - mem - prints RAM metrics\n"
+            - mem - prints RAM metrics\n\
+        easter-egg function:\n\
+            - ps - print all processe\n"
 
         print(HELP)
 
@@ -54,6 +68,8 @@ if __name__=='__main__':
                 getRes.print_cpu()
             elif param.lower()=="mem":
                 getRes.print_mem()
+            elif param.lower()=="ps":
+                getRes.print_ps()
             else:
                 print("Sorry, " + str(param) + " option not recognized.")
                 help.print_full_help()
